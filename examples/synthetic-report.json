@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "id": "SYNTHETIC-EXAMPLE-NOT-A-REAL-AUDIT",
+  "started_at": "2026-01-01T00:00:00Z",
+  "finished_at": "2026-01-01T00:00:00Z",
+  "profile": "passive",
+  "targets": [],
+  "allowed": [],
+  "authorized": false,
+  "pinned": {},
+  "ports": [],
+  "versions": false,
+  "status": "completed",
+  "services": [
+    {
+      "address": "192.0.2.10",
+      "port": 443,
+      "protocol": "tcp",
+      "name": "https",
+      "product": "Synthetic Example Server",
+      "version": "1.0",
+      "detection": "probed"
+    }
+  ],
+  "findings": [
+    {
+      "identifier": "NET-001",
+      "title": "Open TCP service observed",
+      "description": "A TCP endpoint was observed open. This is not proof of a vulnerability.",
+      "evidence": "443/tcp; name=https; product=Synthetic Example Server; version=1.0; detection=probed",
+      "asset": "[192.0.2.10]:443/tcp",
+      "severity": "Informational",
+      "confidence": "high",
+      "kind": "information",
+      "impact": "Reachable services increase exposure only when unnecessary or misconfigured.",
+      "recommendation": "Confirm business need, patch status and access restrictions.",
+      "references": [],
+      "detected_at": "2026-01-01T00:00:00Z",
+      "source": "nmap"
+    }
+  ],
+  "commands": [],
+  "limitations": [
+    "SYNTHETIC DOCUMENTATION DATA — not a real audit or an assertion about a real system.",
+    "Imported scope, original capture date and authorization are not verified.",
+    "No HTTP/TLS analysis or CVE correlation was performed."
+  ],
+  "error": null
+}

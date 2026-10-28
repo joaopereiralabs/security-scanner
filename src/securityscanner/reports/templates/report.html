@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'">
+<title>SecurityScanner — {{ scan.id }}</title>
+<style>
+:root{color-scheme:dark}body{margin:0;background:#091525;color:#e0eaf5;font:16px/1.6 system-ui,sans-serif}
+main{max-width:1100px;margin:40px auto;padding:24px}header{border-bottom:3px solid #38bdf8;padding-bottom:20px}
+h1{font-size:38px;margin:0;color:#7dd3fc}h2{color:#7dd3fc;margin-top:36px}h3{margin-top:0}
+.muted{color:#9db2ca}.cards{display:flex;flex-wrap:wrap;gap:12px;margin:24px 0}
+.card,article{background:#11243b;border:1px solid #244364;border-radius:8px;padding:18px;margin-bottom:16px}
+.card strong{display:block;font-size:26px}table{width:100%;border-collapse:collapse}td,th{padding:10px;text-align:left;border-bottom:1px solid #244364;overflow-wrap:anywhere}
+.table{overflow:auto}dt{font-weight:bold;color:#9db2ca}dd{margin:0 0 12px;overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere}
+@media print{:root{color-scheme:light}body{background:white;color:#14253b}main{margin:0;padding:0}h1,h2,dt{color:#12436d}.card,article{background:white;border-color:#bbb}article{break-inside:avoid}.muted{color:#444}}
+</style></head><body><main><header><div class="muted">JOÃO PEREIRA LABS · AUDIT REPORT</div>
+<h1>SecurityScanner</h1><p>Security Visibility Through Intelligent Analysis</p></header>
+<h2>Executive summary</h2><p>{{ scan.services|length }} open TCP services observed. Open services alone are not confirmed vulnerabilities.</p>
+<div class="cards">{% for severity,count in counts.items() %}<div class="card">{{ severity }}<strong>{{ count }}</strong></div>{% endfor %}</div>
+<dl><dt>Audit / status</dt><dd>{{ scan.id }} / {{ scan.status }}</dd><dt>Started / finished / duration</dt><dd>{{ scan.started_at }} / {{ scan.finished_at }} / {{ scan.duration_seconds }} seconds</dd>
+<dt>Profile / authorization confirmed</dt><dd>{{ scan.profile }} / {{ scan.authorized }}</dd><dt>Authorized scope</dt><dd>{{ scan.allowed|join(', ') or 'Local XML import; original authorization not verified' }}</dd>
+<dt>Targets / pinned addresses / TCP ports / version probes</dt><dd>{{ scan.targets }} / {{ scan.pinned }} / {{ scan.ports }} / {{ scan.versions }}</dd></dl>
+<h2>Services</h2><div class="table"><table><thead><tr><th>Address</th><th>TCP port</th><th>Service</th><th>Product / version</th><th>Detection</th></tr></thead><tbody>
+{% for s in scan.services %}<tr><td>{{ s.address }}</td><td>{{ s.port }}</td><td>{{ s.name }}</td><td>{{ s.product }} {{ s.version }}</td><td>{{ s.detection }}</td></tr>{% else %}<tr><td colspan="5">No open services observed. This does not prove absence of exposure.</td></tr>{% endfor %}</tbody></table></div>
+<h2>Findings by severity</h2>{% for severity in counts %}{% for f in scan.findings if f.severity.value == severity %}<article><h3>{{ f.severity.value }} · {{ f.title }}</h3><dl>
+{% for key,value in f.model_dump().items() %}<dt>{{ key|replace('_',' ') }}</dt><dd>{{ value }}</dd>{% endfor %}</dl></article>{% endfor %}{% endfor %}
+<h2>Limitations and inconclusive checks</h2><ul>{% for item in scan.limitations %}<li>{{ item }}</li>{% endfor %}{% if scan.error %}<li>{{ scan.error }}</li>{% endif %}</ul>
+<h2>Executed commands</h2>{% for cmd in scan.commands %}<pre>{{ cmd|join(' ') }}</pre>{% else %}<p>No scanner command executed.</p>{% endfor %}
+<footer class="muted">Local report · Schema {{ scan.schema_version }} · Treat audit data as confidential.</footer></main></body></html>

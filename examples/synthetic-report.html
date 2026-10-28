@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'">
+<title>SecurityScanner — SYNTHETIC-EXAMPLE-NOT-A-REAL-AUDIT</title>
+<style>
+:root{color-scheme:dark}body{margin:0;background:#091525;color:#e0eaf5;font:16px/1.6 system-ui,sans-serif}
+main{max-width:1100px;margin:40px auto;padding:24px}header{border-bottom:3px solid #38bdf8;padding-bottom:20px}
+h1{font-size:38px;margin:0;color:#7dd3fc}h2{color:#7dd3fc;margin-top:36px}h3{margin-top:0}
+.muted{color:#9db2ca}.cards{display:flex;flex-wrap:wrap;gap:12px;margin:24px 0}
+.card,article{background:#11243b;border:1px solid #244364;border-radius:8px;padding:18px;margin-bottom:16px}
+.card strong{display:block;font-size:26px}table{width:100%;border-collapse:collapse}td,th{padding:10px;text-align:left;border-bottom:1px solid #244364;overflow-wrap:anywhere}
+.table{overflow:auto}dt{font-weight:bold;color:#9db2ca}dd{margin:0 0 12px;overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere}
+@media print{:root{color-scheme:light}body{background:white;color:#14253b}main{margin:0;padding:0}h1,h2,dt{color:#12436d}.card,article{background:white;border-color:#bbb}article{break-inside:avoid}.muted{color:#444}}
+</style></head><body><main><header><div class="muted">JOÃO PEREIRA LABS · AUDIT REPORT</div>
+<h1>SecurityScanner</h1><p>Security Visibility Through Intelligent Analysis</p></header>
+<h2>Executive summary</h2><p>1 open TCP services observed. Open services alone are not confirmed vulnerabilities.</p>
+<div class="cards"><div class="card">Critical<strong>0</strong></div><div class="card">High<strong>0</strong></div><div class="card">Medium<strong>0</strong></div><div class="card">Low<strong>0</strong></div><div class="card">Informational<strong>1</strong></div></div>
+<dl><dt>Audit / status</dt><dd>SYNTHETIC-EXAMPLE-NOT-A-REAL-AUDIT / completed</dd><dt>Started / finished / duration</dt><dd>2026-01-01 00:00:00+00:00 / 2026-01-01 00:00:00+00:00 / 0.0 seconds</dd>
+<dt>Profile / authorization confirmed</dt><dd>passive / False</dd><dt>Authorized scope</dt><dd>Local XML import; original authorization not verified</dd>
+<dt>Targets / pinned addresses / TCP ports / version probes</dt><dd>[] / {} / [] / False</dd></dl>
+<h2>Services</h2><div class="table"><table><thead><tr><th>Address</th><th>TCP port</th><th>Service</th><th>Product / version</th><th>Detection</th></tr></thead><tbody>
+<tr><td>192.0.2.10</td><td>443</td><td>https</td><td>Synthetic Example Server 1.0</td><td>probed</td></tr></tbody></table></div>
+<h2>Findings by severity</h2><article><h3>Informational · Open TCP service observed</h3><dl>
+<dt>identifier</dt><dd>NET-001</dd><dt>title</dt><dd>Open TCP service observed</dd><dt>description</dt><dd>A TCP endpoint was observed open. This is not proof of a vulnerability.</dd><dt>evidence</dt><dd>443/tcp; name=https; product=Synthetic Example Server; version=1.0; detection=probed</dd><dt>asset</dt><dd>[192.0.2.10]:443/tcp</dd><dt>severity</dt><dd>Informational</dd><dt>confidence</dt><dd>high</dd><dt>kind</dt><dd>information</dd><dt>impact</dt><dd>Reachable services increase exposure only when unnecessary or misconfigured.</dd><dt>recommendation</dt><dd>Confirm business need, patch status and access restrictions.</dd><dt>references</dt><dd>[]</dd><dt>detected at</dt><dd>2026-01-01 00:00:00+00:00</dd><dt>source</dt><dd>nmap</dd></dl></article>
+<h2>Limitations and inconclusive checks</h2><ul><li>SYNTHETIC DOCUMENTATION DATA — not a real audit or an assertion about a real system.</li><li>Imported scope, original capture date and authorization are not verified.</li><li>No HTTP/TLS analysis or CVE correlation was performed.</li></ul>
+<h2>Executed commands</h2><p>No scanner command executed.</p>
+<footer class="muted">Local report · Schema 1 · Treat audit data as confidential.</footer></main></body></html>
